@@ -1,6 +1,6 @@
 const todos = require('./createTodo/todos');
 
-const deleteTodo = (req, res, next) => {
+exports.deleteTodo = (req, res, next) => {
     const todoIndex = todos.findIndex((todo) =>
         todo.id = todos.body.id);
 
