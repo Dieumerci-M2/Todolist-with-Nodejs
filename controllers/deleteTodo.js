@@ -1,6 +1,12 @@
 const todos = require('./createTodo/todos');
 
-deleteTodo = async('/delete/:id', (req, res) => {
-    const todoIndex = todos[0];
+const deleteTodo = (req, res, next) => {
+    const todoIndex = todos.findIndex((todo) =>
+        todo.id = todos.body.id);
 
-})
+    if (todoIndex) {
+        todos.splice(todoIndex, 1);
+        res.status(200).redirect('/delete-todo')
+    }
+    res.status(404, 'Todo not found!')
+}
