@@ -1,12 +1,8 @@
-const todos = require('./createTodo/todos');
+const todos = require('./createTodo');
 
 exports.deleteTodo = (req, res, next) => {
-    const todoIndex = todos.findIndex((todo) =>
-        todo.id = todos.body.id);
+    const todoIndex = parseInt(req.params.id);
 
-    if (todoIndex) {
-        todos.splice(todoIndex, 1);
-        res.status(200).redirect('/delete-todo')
-    }
-    res.status(404, 'Todo not found!')
+    todos.todos.splice(todoIndex, 1);
+    res.status(200).redirect('/');
 }
