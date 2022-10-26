@@ -1,22 +1,12 @@
-const todo = require('./createTodo/todos')
+const todo = require('./createTodo')
 
 exports.updateTodo = async (req, res, next) => {
 	try {
 		const id = parseInt(req.params.id);
-        todo.update(req.body, {
-            where: {id : id}
-        })
-		 .then(post => {
-                const index = todo.findIndex(id)
-                todo[index] = { ...id }
-                res.status(201).redirect('/')
-                
-        })
+        todo.todos.splice(id, 1, req.body.title)
+        console.log(todo.todos);
+        res.status(201).redirect('/')
 	}catch (error){
         console.log(error);
     }
 };
-
-// todos.push(req.body.title);
-// console.log(todos);
-// res.status(201).redirect('/');
