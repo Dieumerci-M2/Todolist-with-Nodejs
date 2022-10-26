@@ -7,11 +7,16 @@ exports.updateTodo = async (req, res, next) => {
             where: {id : id}
         })
 		 .then(post => {
-                const index = todo.findIndex(p => p.id == post.id)
+                const index = todo.findIndex(id)
                 todo[index] = { ...id }
+                res.status(201).redirect('/')
                 
         })
 	}catch (error){
         console.log(error);
     }
 };
+
+// todos.push(req.body.title);
+// console.log(todos);
+// res.status(201).redirect('/');
